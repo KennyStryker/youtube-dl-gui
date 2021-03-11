@@ -19,15 +19,14 @@ import math
 import locale
 import subprocess
 
-try:
-    from twodict import TwoWayOrderedDict
-except ImportError as error:
-    print (error)
-    sys.exit(1)
+#try:
+#    from twodict import TwoWayOrderedDict
+#except ImportError as error:
+#    print (error)
+#    sys.exit(1)
 
 from .info import __appname__
 from .version import __version__
-
 
 _RANDOM_OBJECT = object()
 
@@ -68,7 +67,7 @@ def convert_item(item, to_unicode=False):
         # Convert str to unicode
         return item.decode(get_encoding(), 'ignore')
 
-    if not to_unicode and isinstance(item, unicode):
+    if not to_unicode and isinstance(item, str):
         # Convert unicode to str
         return item.encode(get_encoding(), 'ignore')
 
@@ -106,7 +105,7 @@ def convert_on_bounds(func):
 
 # See: https://github.com/MrS0m30n3/youtube-dl-gui/issues/57
 # Patch os functions to convert between 'str' and 'unicode' on app bounds
-os_sep = unicode(os.sep)
+os_sep = str(os.sep)
 os_getenv = convert_on_bounds(os.getenv)
 os_makedirs = convert_on_bounds(os.makedirs)
 os_path_isdir = convert_on_bounds(os.path.isdir)
