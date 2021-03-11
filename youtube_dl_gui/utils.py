@@ -22,7 +22,7 @@ import subprocess
 try:
     from twodict import TwoWayOrderedDict
 except ImportError as error:
-    print error
+    print (error)
     sys.exit(1)
 
 from .info import __appname__
